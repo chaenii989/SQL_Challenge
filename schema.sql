@@ -66,9 +66,28 @@ ALTER TABLE "Salary" ADD CONSTRAINT "fk_Salary_emp_no" FOREIGN KEY("emp_no")
 REFERENCES "Employees" ("emp_no");
 
 
-SELECT * FROM "Department_Employee";
-SELECT * FROM "Department_Manager";
-SELECT * FROM "Departments";
-SELECT * FROM "Employees";
-SELECT * FROM "Salary";
-SELECT * FROM "Titles";
+ALTER TABLE "Department_Employee"
+RENAME TO Department_Employee;
+
+ALTER TABLE "Department_Manager"
+RENAME TO Department_Manager;
+
+ALTER TABLE "Departments"
+RENAME TO Departments;
+
+ALTER TABLE "Employees"
+RENAME TO Employees;
+
+ALTER TABLE "Salary"
+RENAME TO Salary;
+
+ALTER TABLE "Titles"
+RENAME TO Titles;
+
+
+SELECT * FROM Department_Employee;
+SELECT * FROM Department_Manager;
+SELECT * FROM Departments;
+SELECT * FROM Employees;
+SELECT * FROM Salary;
+SELECT * FROM Titles;

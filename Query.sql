@@ -16,7 +16,7 @@ SELECT
     first_name,
     last_name,
     hire_date
-FROM "Employees"
+FROM Employees
 WHERE EXTRACT(year from hire_date) = 1986;  
 
 -- 3. List the manager of each department with the following information: department number, department name, the manager's employee number, last name, first name.
@@ -27,10 +27,10 @@ SELECT
     e.emp_no,
     e.last_name,
     e.first_name
-FROM "Departments" d
-JOIN "Department_Manager"
+FROM Departments d
+JOIN Department_Manager
 USING (dept_no)
-JOIN "Employees" e
+JOIN Employees e
 USING (emp_no);
 
 -- 4. List the department of each employee with the following information: employee number, last name, first name, and department name.
@@ -40,10 +40,10 @@ SELECT
     e.last_name,
     e.first_name,
     d.dept_name
-FROM "Employees" e
-JOIN "Department_Employee"
+FROM Employees e
+JOIN Department_Employee
 USING (emp_no)
-JOIN "Departments" d
+JOIN Departments d
 USING (dept_no);
 
 -- 5. List first name, last name, and sex for employees whose first name is "Hercules" and last names begin with "B."
@@ -52,7 +52,7 @@ SELECT
     first_name,
     last_name,
     sex
-FROM "Employees"
+FROM Employees
 WHERE first_name = 'Hercules' AND last_name LIKE 'B%';
 
 -- 6. List all employees in the Sales department, including their employee number, last name, first name, and department name.
@@ -62,10 +62,10 @@ SELECT
     e.last_name,
     e.first_name,
     d.dept_name
-FROM "Employees" e
-JOIN "Department_Employee"
+FROM Employees e
+JOIN Department_Employee
 USING (emp_no)
-JOIN "Departments" d
+JOIN Departments d
 USING (dept_no)
 WHERE dept_name = 'Sales';
 
@@ -76,10 +76,10 @@ SELECT
     e.last_name,
     e.first_name,
     d.dept_name
-FROM "Employees" e
-JOIN "Department_Employee"
+FROM Employees e
+JOIN Department_Employee
 USING (emp_no)
-JOIN "Departments" d
+JOIN Departments d
 USING (dept_no)
 WHERE dept_name = 'Sales' OR dept_name = 'Development';
 
@@ -88,14 +88,6 @@ WHERE dept_name = 'Sales' OR dept_name = 'Development';
 SELECT 
     last_name,
     COUNT(last_name) AS "frequency"
-FROM "Employees"
+FROM Employees
 GROUP BY last_name
 ORDER BY COUNT(last_name) DESC;
-
-
-
-
-
- from sqlalchemy import create_engine
-   engine = create_engine('postgresql://postgres:<password>@localhost:5432/Employees_DB')
-   connection = engine.connect()
